@@ -1,5 +1,11 @@
 # Ex-01-Simple-Web-Server
-## Date:
+
+NAME : ALIYA SHEEMA
+
+REFERENCE NUMBER : 23005529
+
+DEPT : AIDS
+## Date : 09.11.2023
 
 ## AIM:
 To develop a simple webserver to serve html pages.
@@ -21,10 +27,37 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
+content = """
+<html>
+<head>
+</head>
+<body>
+<h1>Welcome</h1>
+</body>
+</html>
+"""
+
+class HelloHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+
+
+server_address = ('', 80)
+httpd = HTTPServer(server_address, HelloHandler)
+httpd.serve_forever()
+
+```
 
 ## OUTPUT:
 
+![Alt text](<Screenshot 2023-11-09 092046.png>)
+
 
 ## RESULT:
-The program for implementing simple webserver is executed successfully.
+ The program for implementing simple webserver is executed successfully.
